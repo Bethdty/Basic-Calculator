@@ -1,0 +1,52 @@
+## define the calculation inputs
+
+def addition ():
+    print('Addition')
+    n = float(input('Enter your first number: '))
+    ans = 0                                     ## beginning point for loop
+    t = 0                                       ## total nuber of inputs
+    while n != 0:
+        ans = ans + n
+        t += 1
+        n = float(input('Enter another number (press 0 to calculate): '))
+    return[ans,t]
+
+def subtraction ():
+    print('Subtraction')
+    n1 = float(input('Enter your first number: '))
+    ans = n1
+    n2 = 0
+    t = 0
+    while n1 != 0 and n2 == 0:
+        ans = n1 - n2
+        t += 1
+        n2 = float(input('Enter your next number (press 0 to calculate): '))
+    while n1 != 0 and n2 != 0:
+        ans = ans - n2
+        t += 1
+        n2 = float(input('Enter your next number (press 0 to calculate): '))
+    return[ans,t]
+  
+  
+  
+## main code section
+while True:
+    list = []
+    print('Welcome to the calculator!')
+    print('What would you like me to do?')
+    print('Enter "a" for addition')
+    print('Enter "s" for subtraction')
+    print('Enter "q" to quit')
+    user = input('')
+
+    if user != 'q':
+        if user == 'a':
+            list = addition()
+            print('Ans = ',list[0],' Total Inputs = ',list[1])
+        elif user == 's':
+            list = subtraction()
+            print('Ans = ',list[0],' Total Inputs = ',list[1])
+        else:
+            print('Sorry, character not recognised')
+    else:
+        break
