@@ -1,0 +1,114 @@
+## test page for building a multi input calculator
+
+## define the calculation inputs
+
+def addition ():
+    print('Addition')
+    n = float(input('Enter your first number: '))
+    ans = 0                                     ## beginning point
+    t = 0                                       ## total nuber of inputs
+    while n != 0:
+        ans = ans + n
+        t += 1
+        n = float(input('Enter another number (press 0 to calculate): '))
+    return[ans,t]
+
+def subtraction ():
+    print('Subtraction')
+    n1 = float(input('Enter your first number: '))
+    ans = n1
+    n2 = 0
+    t = 0
+    while n1 != 0 and n2 == 0:
+        ans = n1 - n2
+        t += 1
+        n2 = float(input('Enter your next number (press 0 to calculate): '))
+    while n1 != 0 and n2 != 0:
+        ans = ans - n2
+        t += 1
+        n2 = float(input('Enter your next number (press 0 to calculate): '))
+    return[ans,t]
+
+def multiplication ():
+    print('Multiplication')
+    n = float(input('Enter your first number: '))
+    ans = 1
+    t = 0
+    while n != 0:
+        ans = ans * n
+        t += 1
+        n = float(input('Enter your next number (press 0 to calculate): '))
+    return[ans,t]
+
+def division ():
+    print('Division')
+    n = float(input('Enter your first number: '))
+    ans = 1
+    t = 0
+    while t == 0:
+        ans = n / 1
+        t += 1
+        n = float(input('Enter your next number (press 0 to calculate): '))
+    while n != 0 and t > 0:
+        ans = ans / n
+        t += 1
+        n = float(input('Enter your next number (press 0 to calculate): '))
+    return[ans,t]
+
+def percentage ():
+    print('Percentage')
+    n = float(input('Enter the number you wish to find the percentage of: '))
+    n1 = float(input('Enter the percentage you wish to find: '))
+    ans = (n/100)*n1
+    return[ans,n,n1]
+
+def percentage2 ():
+    print('Percentage')
+    print('Your question is: what percentage of x is y?')
+    n = float(input('Please enter your value for x: '))
+    n1 = float(input('Please enter your value for y: '))
+    ans = (n1/n)*100
+    return[ans,n,n1]
+
+
+## main code section
+while True:
+    list = []
+    print('Welcome to the calculator!')
+    print('What would you like me to do?')
+    print('Enter "a" for addition')
+    print('Enter "s" for subtraction')
+    print('Enter "m" for multiplication')
+    print('Enter "d" for division')
+    print('Enter "p" for percentage')
+    print('Enter "q" to quit')
+    user = input('')
+   ## print('\n')
+
+    if user != 'q':
+        if user == 'a':
+            list = addition()
+            print('Ans = ',list[0],' Total Inputs = ',list[1],'\n')
+        elif user == 's':
+            list = subtraction()
+            print('Ans = ',list[0],' Total Inputs = ',list[1],'\n')
+        elif user == 'm':
+            list = multiplication()
+            print('Ans = ',list[0],' Total Inputs = ',list[1],'\n')
+        elif user == 'd':
+            list = division()
+            print('Ans = ',list[0],' Total Inputs = ',list[1],'\n')
+        elif user == 'p':
+            per = input('Would you like to find a percentage of a number, or what percent a number is of another? 1/2: ')
+            if per == '1':
+                list = percentage()
+                print(list[2],'percent of {} is'.format(list[1]),list[0],'\n')
+            elif per == '2':
+                list = percentage2()
+                print(list[2],'is',list[0],'% of',list[1],'\n')
+            else:
+                print('Sorry, your request was not recognised.\n')
+        else:
+            print('Sorry, character not recognised.')
+    else:
+        break
